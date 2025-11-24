@@ -19,7 +19,7 @@ class ChampionnatsController extends AppController {
                 
         'Categories' => function ($q){ 
             return $q 
-            ->select(['nom_categories']);
+            ->select(['nom_categorie']);
         }])->all();
         $this->set(compact('mesChampionnats')); //envoie à la vue le contenu de $mesDivisions dans $rep qui sera utiliseable
     }
@@ -40,18 +40,27 @@ class ChampionnatsController extends AppController {
     } */
 
      public function add() {
+         $mesDivisions = $this->fetchTable('Divisions')
+                ->find('list', keyField: 'id', valueField: 'name')
+                ->toArray();
+         $mesCategories = $this->fetchTable('Categories')
+                ->find('list', keyField: 'id', valueField: 'nom_categorie')
+                ->toArray();
+         $mesTypesChampionnats = $this->fetchTable('TypeChampionnats')
+                ->find('list', keyField: 'id', valueField: 'name')
+                ->toArray();
         
         $leChampionnat = $this->Championnats->newEmptyEntity();
         if ($this->request->is('post')) {
             $leChampionnat = $this->Championnats->patchEntity($leChampionnat, $this->request->getData());
             if ($this->Championnats->save($leChampionnat)) {
-                $this->Flash->success(__("Le tchampionnat a été sauvegardé."));
+                $this->Flash->success(__("Le championnat a été sauvegardé."));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__("Impossible d'ajouter le championnat."));
             }
         }
-        $this->set(compact('leChampionnat'));
+        $this->set(compact('leChampionnat', 'mesDivisions', 'mesCategories', 'mesTypesChampionnats'));
     }
 
     public function edit($id = null) {

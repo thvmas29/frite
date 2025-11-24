@@ -35,7 +35,7 @@ $this->html->image("btn_add.png",["alt" => "Add", 'url' => ['action' => 'add'], 
 
             <td> <?=
                 $this->html->link($this->html->image("btn_edit.png", ["alt" => "edit"]),
-                        ['url' => ['action' => 'edit', $division->id], 
+                        ['action' => 'edit', $division->id, 
                         'style' => 'height:48px;'], 
                         ['escape' => false]);
                 ?>

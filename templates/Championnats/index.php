@@ -9,9 +9,9 @@ $this->html->image("btn_add.png",["alt" => "Add", 'url' => ['action' => 'add'], 
     <tr>
         <th>Id</th>
         <th>Nom</th>
-        <th>Num. Catégorie</th>
-        <th>Num. Division</th>
-        <th>Num. Type Championnat</th>
+        <th>Catégorie</th>
+        <th>Division</th>
+        <th>Type Championnat</th>
         <th>Date de création</th>
         <th>Date de modification</th>
         <th> Action </th>
@@ -31,9 +31,9 @@ $this->html->image("btn_add.png",["alt" => "Add", 'url' => ['action' => 'add'], 
                 ?>
             </td>
             
-            <td><?= $championnat->num_categorie_id ?></td>
-            <td><?= $championnat->num_division_id ?></td>
-            <td><?= $championnat->num_type_championnat_id ?></td>
+            <td><?= $championnat->category->nom_categorie ?></td>
+            <td><?= $championnat->division->name?></td>
+            <td><?= $championnat->type_championnat->name ?></td>
             <td><?= $championnat->created->format(DATE_RFC850) ?></td>
             <td><?= $championnat->modified->format(DATE_RFC850) ?></td>
 

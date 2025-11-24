@@ -9,9 +9,9 @@ class ChampionnatsTable extends Table {
 
     public function initialize(array $config): void {
         $this->addBehavior('Timestamp');
-        $this->hasOne('Divisions');
-        $this->hasOne('Categories');
-        $this->hasOne('TypeChampionnats');
+        $this->belongsTo('Divisions');
+        $this->belongsTo('Categories');
+        $this->belongsTo('TypeChampionnats');
     }
 
     public function validationDefault(Validator $validator): Validator {

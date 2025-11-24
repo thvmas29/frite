@@ -17,7 +17,7 @@ class InsertChampionnats extends BaseMigration
     {
         $users = $this->table('championnats');
         $rows = [
-          ['nom_championnat' => 'LeGrandChampionnat', 'num_categorie_id' => 1, 'num_division_id' => 3, 'num_type_championnat_id' => 2] 
+          ['nom_championnat' => 'LeGrandChampionnat', 'category_id' => 1, 'division_id' => 3, 'type_championnat_id' => 2] 
         ];
         $users->insert($rows)->saveData();
     }

@@ -22,19 +22,28 @@ class CreateChampionnats extends BaseMigration
             'null' => false,
         ]);
         
-        $table->addColumn('num_categorie_id', 'integer', [
+        $table->addColumn('category_id', 'integer', [
             'null' => false
         ]);
-        $table->addColumn('num_division_id', 'integer', [
+        $table->addColumn('division_id', 'integer', [
             'null' => false
         ]);
-        $table->addColumn('num_type_championnat_id', 'integer', [
+        $table->addColumn('type_championnat_id', 'integer', [
             'null' => false
         ]);
         
-        $table->addForeignKey('num_categorie_id', 'categories', 'id');
-        $table->addForeignKey('num_division_id', 'divisions', 'id');
-        $table->addForeignKey('num_type_championnat_id', 'type_championnats', 'id');
+        $table->addColumn('created', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        $table->addColumn('modified', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
+        
+        $table->addForeignKey('category_id', 'categories', 'id');
+        $table->addForeignKey('division_id', 'divisions', 'id');
+        $table->addForeignKey('type_championnat_id', 'type_championnats', 'id');
         $table->create();
     }
 }
